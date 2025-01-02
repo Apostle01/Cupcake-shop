@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Orders{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Orders</h1>
+<a href="{% url 'add_order' %}" class="btn btn-primary mb-3">
+    <i class="fas fa-plus"></i> Add New Order
+</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Customer</th>
+            <th>Order Date</th>
+            <th>Delivery Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for order in orders %}
+        <tr>
+            <td>{{ order.id }}</td>
+            <td>{{ order.customer }}</td>
+            <td>{{ order.order_date }}</td>
+            <td>{{ order.delivery_type }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
