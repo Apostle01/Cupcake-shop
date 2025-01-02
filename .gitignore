@@ -22,4 +22,7 @@ media/
 .vscode/
 *.swp
 .idea/
+__pycache__/
+*.pyc
+*.pyo
 
