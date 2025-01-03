@@ -1,4 +1,5 @@
 from django.db import models
+from decimal import Decimal
 
 
 class Customer(models.Model):
@@ -60,7 +61,7 @@ class Cupcake(models.Model):
     cupcake_color = models.CharField(max_length=20, choices=COLORS, blank=True, null=True)
     icing_color = models.CharField(max_length=20, choices=COLORS, blank=True, null=True)
     decorations = models.TextField(blank=True, null=True)
-    price = models.DecimalField(max_digits=5, decimal_places=2)
+    price = models.DecimalField(max_digits=5, decimal_places=2, default=Decimal('0.00'))
     image = models.ImageField(upload_to='images/', default='images/default_cupcake.jpg')  # Images will be stored in 'media/images/'
 
     def __str__(self):
