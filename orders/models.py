@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Customer(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
@@ -59,18 +60,8 @@ class Cupcake(models.Model):
     cupcake_color = models.CharField(max_length=20, choices=COLORS, blank=True, null=True)
     icing_color = models.CharField(max_length=20, choices=COLORS, blank=True, null=True)
     decorations = models.TextField(blank=True, null=True)
-
-    def __str__(self):
-        return f"Cupcake #{self.id} for Order #{self.order.id}"
-    
-
-class Cupcake(models.Model):
-    flavor = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=5, decimal_places=2)
-    decorations = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to='images/')  # Images will be stored in 'media/images/'
 
     def __str__(self):
-        return self.flavor
-
-
+        return f"Cupcake #{self.id} for Order #{self.order.id} - {self.flavor}"
