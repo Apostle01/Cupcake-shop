@@ -13,7 +13,12 @@
         {% for cupcake in cupcakes %}
         <div class="col-md-4 mb-4">
             <div class="card">
+                <!-- Handle missing images gracefully -->
+                {% if cupcake.image %}
                 <img src="{{ cupcake.image.url }}" class="card-img-top" alt="{{ cupcake.flavor }}">
+                {% else %}
+                <img src="{% static 'orders/images/default_cupcake.jpg' %}" class="card-img-top" alt="Default Cupcake">
+                {% endif %}
                 <div class="card-body">
                     <h5 class="card-title">{{ cupcake.flavor }}</h5>
                     <p class="card-text">
