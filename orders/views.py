@@ -4,7 +4,8 @@ from .forms import CustomerForm, OrderForm, CupcakeForm
 
 
 def home(request):
-    return render(request, 'orders/home.html')
+    cupcakes = Cupcake.objects.all()  # Fetch all cupcakes
+    return render(request, 'orders/home.html', {'cupcakes': cupcakes})
 
 
 # Customer Views

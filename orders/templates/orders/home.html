@@ -1,15 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="{% static 'orders/css/styles.css' %}">
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container text-center mt-5">
+    <!-- Cupcake Logo -->
+    <img src="{% static 'orders/images/logo.png' %}" alt="Sarah's Cupcakes Logo" class="mb-4" style="max-width: 150px;">
+
     <h1>Welcome to Sarah's Cupcakes!</h1>
-    <p>Delicious cupcakes delivered fresh to your door.</p>
-    <a href="{% url 'customer_list' %}">View Customers</a> |
-    <a href="{% url 'order_list' %}">View Orders</a>
-</body>
-</html>
+    <p class="lead">Delicious cupcakes delivered fresh to your door.</p>
+
+    <!-- Cupcake Gallery -->
+    <div class="row mt-5">
+        {% for cupcake in cupcakes %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="{{ cupcake.image.url }}" class="card-img-top" alt="{{ cupcake.flavor }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ cupcake.flavor }}</h5>
+                    <p class="card-text">
+                        <strong>Price:</strong> ${{ cupcake.price }} <br>
+                        <strong>Decorations:</strong> {{ cupcake.decorations }}
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Buttons -->
+    <div class="mt-4">
+        <a href="{% url 'customer_list' %}" class="btn btn-primary">View Customers</a>
+        <a href="{% url 'order_list' %}" class="btn btn-secondary">View Orders</a>
+    </div>
+</div>
+{% endblock %}

@@ -62,4 +62,15 @@ class Cupcake(models.Model):
 
     def __str__(self):
         return f"Cupcake #{self.id} for Order #{self.order.id}"
+    
+
+class Cupcake(models.Model):
+    flavor = models.CharField(max_length=100)
+    price = models.DecimalField(max_digits=5, decimal_places=2)
+    decorations = models.TextField(blank=True, null=True)
+    image = models.ImageField(upload_to='images/')  # Images will be stored in 'media/images/'
+
+    def __str__(self):
+        return self.flavor
+
 
