@@ -14,27 +14,14 @@
         <div class="col-md-4 mb-4">
             <div class="card">
                 <!-- Handle missing images gracefully -->
-                {% if cupcake.image %}
-                <img src="{{ cupcake.image.url }}" class="card-img-top" alt="{{ cupcake.flavor }}">
-                {% else %}
-                <img src="{% static 'orders/images/default_cupcake.jpg' %}" class="card-img-top" alt="Default Cupcake">
-                {% endif %}
+                <img src="{{ cupcake.image.url }}" alt="{{ cupcake.name }}" class="card-img-top" onerror="this.onerror=null;this.src='{% static 'orders/images/default_cupcake.png' %}';">
                 <div class="card-body">
-                    <h5 class="card-title">{{ cupcake.flavor }}</h5>
-                    <p class="card-text">
-                        <strong>Price:</strong> ${{ cupcake.price }} <br>
-                        <strong>Decorations:</strong> {{ cupcake.decorations }}
-                    </p>
+                    <h5 class="card-title">{{ cupcake.name }}</h5>
+                    <p class="card-text">{{ cupcake.description }}</p>
                 </div>
             </div>
         </div>
         {% endfor %}
-    </div>
-
-    <!-- Buttons -->
-    <div class="mt-4">
-        <a href="{% url 'customer_list' %}" class="btn btn-primary">View Customers</a>
-        <a href="{% url 'order_list' %}" class="btn btn-secondary">View Orders</a>
     </div>
 </div>
 {% endblock %}
