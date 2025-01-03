@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'orders/css/styles.css' %}">
+</head>
+<body>
+    <h1>Welcome to Sarah's Cupcakes!</h1>
+    <p>Delicious cupcakes delivered fresh to your door.</p>
+    <a href="{% url 'customer_list' %}">View Customers</a> |
+    <a href="{% url 'order_list' %}">View Orders</a>
+</body>
+</html>

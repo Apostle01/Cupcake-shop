@@ -3,6 +3,10 @@ from .models import Customer, Order, Cupcake
 from .forms import CustomerForm, OrderForm, CupcakeForm
 
 
+def home(request):
+    return render(request, 'orders/home.html')
+
+
 # Customer Views
 def customer_list(request):
     customers = Customer.objects.all()
